@@ -12,7 +12,7 @@ It is probably of limited use, but I needed it. And maybe you do to.
 
 ## acf-svg-element-selector
 
-First of all you'll need to enable SVG support for the media library, using a plugin such as (https://en-gb.wordpress.org/plugins/svg-support/)[SVG Support]. And to ensure an XML tag is at the start of your SVG file (see instructions on that plugin page).
+First of all you'll need to enable SVG support for the media library, using a plugin such as [SVG Support](https://en-gb.wordpress.org/plugins/svg-support/). And to ensure an XML tag is at the start of your SVG file (see instructions on that plugin page).
 
 1. Create a new SVG Element Selector field
 2. Upload an SVG to the Media Library
@@ -21,3 +21,7 @@ First of all you'll need to enable SVG support for the media library, using a pl
 When the field is in use, all the fill colours will be stripped from the SVG. Click a part of the SVG to set the active fill color.
 
 The fill color will be set using JavaScript in the editor. It is up to you to modify the actual SVG output on the front end.
+
+![Field Settings](https://raw.githubusercontent.com/SimeonGriggs/acf-svg-element-selector/master/docs/example-field-settings.png)
+
+![Field in use](https://raw.githubusercontent.com/SimeonGriggs/acf-svg-element-selector/master/docs/example-field.png)
