@@ -12,7 +12,7 @@
    */
 
   function initialize_field($field) {
-    // console.log($field);
+    console.log($field);
 
     // Get SVG and Input
     const svgWrapper = document.querySelector('.svg_element_selector_file');
@@ -31,7 +31,7 @@
 
     if (svgElement && svgInput) {
       // Get all elements inside
-      const svgElementPaths = svgElement.querySelectorAll('g, circle, path');
+      const svgElementPaths = svgElement.querySelectorAll('circle, path');
 
       if (svgElementPaths) {
         svgElementPaths.forEach(function(path) {
@@ -86,8 +86,8 @@
      *  @return	n/a
      */
 
-    acf.add_action('ready_field/name=svg_element_selector', initialize_field);
-    acf.add_action('append_field/name=svg_element_selector', initialize_field);
+    acf.add_action('ready_field/type=svg_element_selector', initialize_field);
+    acf.add_action('append_field/type=svg_element_selector', initialize_field);
   } else {
     /*
      *  acf/setup_fields (ACF4)

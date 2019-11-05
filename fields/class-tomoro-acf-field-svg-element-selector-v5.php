@@ -30,7 +30,7 @@ class tomoro_acf_field_svg_element_selector extends acf_field {
 		*  name (string) Single word, no spaces. Underscores allowed
 		*/
 
-		$this->name = 'SVG Element Selector';
+		$this->name = 'svg_element_selector';
 
 
 		/*
@@ -53,6 +53,7 @@ class tomoro_acf_field_svg_element_selector extends acf_field {
 
 		$this->defaults = array(
 			'svg_element_selector_file'	          => null,
+			'svg_element_selector_file_overlay'   => null,
 			'svg_element_selector_color_default'  => '#efefef',
 			'svg_element_selector_color_selected' => 'tomato',
 		);
@@ -63,9 +64,9 @@ class tomoro_acf_field_svg_element_selector extends acf_field {
 		*  var message = acf._e('FIELD_NAME', 'error');
 		*/
 
-		$this->l10n = array(
-			'error'	=> __('Error! Please enter a higher value', 'tomoro'),
-		);
+		// $this->l10n = array(
+		// 	'error'	=> __('Error! Please enter a higher value', 'tomoro'),
+		// );
 
 
 		/*
@@ -170,26 +171,26 @@ class tomoro_acf_field_svg_element_selector extends acf_field {
                 .svg_element_selector_file svg,
                 .svg_element_selector_file_overlay svg {
                     max-width: 100%;
+                    height: auto;
                 }
 
+                /* Hide overlay on hover */
+                .svg_element_selector:hover .svg_element_selector_file_overlay {
+                    opacity: 0.2;
+                }
+
+                /* Overlay unclickable */
                 .svg_element_selector_file_overlay {
-                    pointer-events: none;
                     position: absolute;
+                    pointer-events: none;
                     transition: opacity 0.2s ease;
-                }
-
-                .svg_element_selector_file_overlay:hover {
-                    opacity: .5;
                 }
             </style>
             <div class="svg_element_selector">
                 <?php if ($field['svg_element_selector_file_overlay']) : ?>
-                <div class="svg_element_selector_file_overlay">
-                    <?php
-                    $svg_image_overlay = file_get_contents(wp_get_attachment_image_url($field['svg_element_selector_file_overlay']));
-                    echo $svg_image_overlay;
-                    ?>
-                </div>
+                    <div class="svg_element_selector_file_overlay">
+                        <?php echo file_get_contents(wp_get_attachment_image_url($field['svg_element_selector_file_overlay'])); ?>
+                    </div>
                 <?php endif; ?>
                 <div class="svg_element_selector_file" data-color-default="<?php echo $field['svg_element_selector_color_default']; ?>"  data-color-selected="<?php echo $field['svg_element_selector_color_selected']; ?>">
                     <?php
